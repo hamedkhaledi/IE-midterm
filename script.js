@@ -3,7 +3,7 @@ var saved_name = '';
 function showError(errorText) {
   console.log(errorText);
   document.getElementById(
-    'saved_answer'
+    'probability'
   ).innerHTML = `<div class = 'error'>${errorText}</div>`;
 }
 
@@ -51,7 +51,27 @@ function showPredict(gender, probability) {
 function emptyPredict(gender, probability) {
   document.getElementById('gen_predict').innerHTML = '';
   document = document.getElementById('probability').innerHTML = '';
-  document.getElementById('saved_answer').innerHTML = '';
+  removeSavedContainer();
+}
+function removeSavedContainer() {
+  let myobj = document.getElementById('saved-container');
+  if (myobj !== null) myobj.remove();
+}
+function createSavedContainer(gen) {
+  let saved_container = document.getElementById('saved-container');
+  if (saved_container !== null) {
+    document.getElementById('saved_answer').innerHTML = gen;
+  } else {
+    let myobj = document.createElement('div');
+    myobj.id = 'saved-container';
+    myobj.className = 'answer-container';
+    myobj.innerHTML = `
+      <h2>Saved Ansewr</h2>
+      <div id="saved_answer">${gen}</div>
+      <br />
+      <button onclick="clearButton(event);">Clear</button>`;
+    document.getElementById('right-container').appendChild(myobj);
+  }
 }
 function submitButton(event) {
   event.preventDefault();
@@ -73,10 +93,10 @@ function submitButton(event) {
     saved_gender = localStorage.getItem(name);
     if (saved_gender == null) {
       sendRequest(name);
-      document.getElementById('saved_answer').innerHTML = '';
+      removeSavedContainer();
     } else {
       saved_name = name;
-      document.getElementById('saved_answer').innerHTML = saved_gender;
+      createSavedContainer(name);
     }
   }
 }
