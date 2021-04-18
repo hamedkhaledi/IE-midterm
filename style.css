@@ -1,68 +1,91 @@
+/* set defualt font for whole page */
 *{
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+/* set background image and color */
 .background {
   background-color: #000000;
   text-align: center;
   background-image: url('wallpaper.jpg');
   background-position: center;
+  /* just one image without repeat */
   background-repeat: no-repeat;
+  /* full size image */
   background-size: cover;
 }
+/* background of content ( center rectangle ) */
 .content-background {
+  /* color */
   background-color: rgba(255, 255, 255, 0.938);
-  opacity: 0.5;
+  /* transparency */
+  opacity: 0.7;
+  /* set corner radius */
   border-radius: 8px;
   margin: 20%;
+  /* border style : line  */
   border-style: solid;
   border-color: rgb(180, 225, 65);
   border-width: 2px;
+  /* show divs child in row */
   display: flex;
   overflow: hidden;
 }
+/* common style of container right and left */
 
 .container {
   width: 50%;
   height: 100%;
   text-align: left;
+  /* paddings */
   padding-left: 5%;
   padding-bottom: 10%;
   padding-right: 5%;
 }
-
+/* saved container style */
 .answer-container {
   border-style: dashed;
   border-color: darksalmon;
   border-width: 2px;
   padding: 5%;
 }
-
+/* style of button */
 button {
   border-radius: 4px;
+  /* text color */
   color: white;
+  /* color */
   background-color: rgb(2, 75, 147);
+  /* animation time */
   transition: 0.5s;
+  /* text bold */
   font-weight: bold;
 }
+/* animation of button (change text and background color of button and cursor type)*/
 button:hover {
   background-color: lightblue;
   color: #000000;
   cursor: pointer;
 }
+/* style of error text */
 .error {
   color: red;
   font-weight: bold;
   font-size: 12;
 }
+/* text input style */
 #input_name {
   background-color: transparent;
+  /* text color */
   color: #000000;
+  /* - bottom line style - */
   outline: none;
   outline-style: none;
+  /* remove all borders except bottom */
   border-top: none;
   border-left: none;
   border-right: none;
   border-bottom: solid #0c005b 2px;
+  /* - - */
   padding: 3px 10px;
   text-align: center;
   width: 60%;
